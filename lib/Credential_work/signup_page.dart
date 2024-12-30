@@ -2,6 +2,7 @@ import 'package:authentication_work/Credential_work/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:social_media_buttons/social_media_icons.dart';
 
 class Signup_Page extends StatefulWidget {
   const Signup_Page({super.key});
@@ -174,27 +175,18 @@ class _Signup_PageState extends State<Signup_Page> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 50.h,
-                    width: 50.w,
-                    decoration: BoxDecoration(color: Colors.grey),
-                  ),
+                  Icon(SocialMediaIcons.google),
                   SizedBox(
                     width: 20.w,
                   ),
-                  Container(
-                    height: 50.h,
-                    width: 50.w,
-                    decoration: BoxDecoration(color: Colors.grey),
-                  ),
+                  Icon(SocialMediaIcons.facebook,),
                   SizedBox(
                     width: 20.w,
                   ),
-                  Container(
-                    height: 50.h,
-                    width: 50.w,
-                    decoration: BoxDecoration(color: Colors.grey),
-                  )
+                  Icon(SocialMediaIcons.twitter),
+                  SizedBox(
+                    width: 20.w,
+                  ),
                 ],
               ),
               SizedBox(

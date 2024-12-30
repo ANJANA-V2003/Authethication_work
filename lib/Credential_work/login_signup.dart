@@ -16,6 +16,7 @@ class _Login_SignupState extends State<Login_Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           SizedBox(
@@ -27,7 +28,10 @@ class _Login_SignupState extends State<Login_Signup> {
               Container(
                 height: 350.h,
                 width: 350.w,
-                decoration: BoxDecoration(color: Colors.grey),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                        image: AssetImage("assets/login_signup.png"))),
               )
             ],
           ),
@@ -71,18 +75,20 @@ class _Login_SignupState extends State<Login_Signup> {
               )
             ],
           ),
-          SizedBox(height: 40.h,),
+          SizedBox(
+            height: 40.h,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InkWell(onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return Login_Page();
-                  },
-                ));
-
-              },
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return Login_Page();
+                    },
+                  ));
+                },
                 child: Container(
                   height: 50.h,
                   width: 260.w,
@@ -100,29 +106,32 @@ class _Login_SignupState extends State<Login_Signup> {
               )
             ],
           ),
-          SizedBox(height: 30.h,),
+          SizedBox(
+            height: 30.h,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InkWell(onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return Signup_Page();
-                  },
-                ));
-
-              },
+              InkWell(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return Signup_Page();
+                    },
+                  ));
+                },
                 child: Container(
                   height: 50.h,
                   width: 260.w,
-                  decoration: BoxDecoration(border: Border.all(color: Colors.purple,width: 2)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.purple, width: 2)),
                   child: Center(
                     child: Text(
                       "SIGNUP",
                       style: GoogleFonts.poppins(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.w600,
-                          ),
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),

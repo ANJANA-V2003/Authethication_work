@@ -1,7 +1,9 @@
+import 'package:authentication_work/Credential_work/Logged_in.dart';
 import 'package:authentication_work/Credential_work/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:social_media_buttons/social_media_buttons.dart';
 
 class Login_Page extends StatefulWidget {
   const Login_Page({super.key});
@@ -86,7 +88,7 @@ class _Login_PageState extends State<Login_Page> {
                       if (form_key.currentState!.validate()) {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
-                            return Login_Page();
+                            return LoggedIn();
                           },
                         ));
                       }
@@ -175,27 +177,15 @@ class _Login_PageState extends State<Login_Page> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 50.h,
-                    width: 50.w,
-                    decoration: BoxDecoration(color: Colors.grey),
-                  ),
+                  Icon(SocialMediaIcons.google),
                   SizedBox(
                     width: 20.w,
                   ),
-                  Container(
-                    height: 50.h,
-                    width: 50.w,
-                    decoration: BoxDecoration(color: Colors.grey),
-                  ),
+                  Icon(SocialMediaIcons.facebook,),
                   SizedBox(
                     width: 20.w,
                   ),
-                  Container(
-                    height: 50.h,
-                    width: 50.w,
-                    decoration: BoxDecoration(color: Colors.grey),
-                  )
+                  Icon(SocialMediaIcons.twitter),
                 ],
               ),
               SizedBox(

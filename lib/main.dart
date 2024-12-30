@@ -1,5 +1,7 @@
+import 'package:authentication_work/Credential_work/login_page.dart';
 import 'package:authentication_work/Credential_work/login_signup.dart';
 import 'package:authentication_work/mobile_auth/number_verify.dart';
+import 'package:authentication_work/mobile_auth/otp_success_page.dart';
 import 'package:authentication_work/mobile_auth/otp_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Otp_Verification()
+      home: const Login_Page()
     ),
     );
   }
