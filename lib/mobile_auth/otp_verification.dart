@@ -49,7 +49,9 @@ class _Otp_VerificationState extends State<Otp_Verification> {
           SizedBox(
             height: 60.h,
           ),
-          Pinput(closeKeyboardWhenCompleted: true,pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+          Pinput(
+            closeKeyboardWhenCompleted: true,
+            pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
             onCompleted: (value) {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) {
