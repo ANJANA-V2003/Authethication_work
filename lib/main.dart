@@ -1,12 +1,16 @@
 import 'package:authentication_work/Credential_work/login_page.dart';
 import 'package:authentication_work/Credential_work/login_signup.dart';
+import 'package:authentication_work/firebase_options.dart';
 import 'package:authentication_work/mobile_auth/number_verify.dart';
 import 'package:authentication_work/mobile_auth/otp_success_page.dart';
 import 'package:authentication_work/mobile_auth/otp_verification.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+ Future<void> main() async{
+   WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -41,7 +45,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Login_Page()
+      home: const Login_Signup()
     ),
     );
   }
