@@ -1,3 +1,4 @@
+import 'package:authentication_work/Credential_work/crudauth.dart';
 import 'package:authentication_work/Credential_work/login_page.dart';
 import 'package:authentication_work/Credential_work/login_signup.dart';
 import 'package:authentication_work/firebase_options.dart';
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Login_Signup()
+      home:  Crudauth()
     ),
     );
   }

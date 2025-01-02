@@ -1,4 +1,7 @@
+import 'package:authentication_work/Credential_work/Home.dart';
 import 'package:authentication_work/Credential_work/login_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,6 +16,43 @@ class Signup_Page extends StatefulWidget {
 
 class _Signup_PageState extends State<Signup_Page> {
   final form_key = GlobalKey<FormState>();
+  final namectrl = TextEditingController();
+  final mailctrl = TextEditingController();
+  final pswctrl = TextEditingController();
+  final plcctrl = TextEditingController();
+  final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+
+  void registerUser() async {
+    if (form_key.currentState!.validate()) {
+      try {
+        UserCredential userCredential =
+            await _auth.createUserWithEmailAndPassword(
+          email: mailctrl.text,
+          password: pswctrl.text,
+        );
+
+        await _firestore
+            .collection('CrudUser')
+            .doc(userCredential.user!.uid)
+            .set({
+          'name': namectrl.text,
+          'email': mailctrl.text,
+          'place': plcctrl.text,
+        });
+
+        Navigator.pushReplacement(context, MaterialPageRoute(
+          builder: (context) {
+            return Home();
+          },
+        ));
+      } catch (e) {
+        print("Registration Error: $e");
+      }
+    }
+  }
+
+  // String name = '', email = '', password = '', place = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +93,7 @@ class _Signup_PageState extends State<Signup_Page> {
               Padding(
                 padding: EdgeInsets.only(left: 40.w, right: 40.w, top: 40.h),
                 child: TextFormField(
+                  controller: namectrl,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "*required";
@@ -66,6 +107,7 @@ class _Signup_PageState extends State<Signup_Page> {
               Padding(
                 padding: EdgeInsets.only(left: 40.w, right: 40.w, top: 40.h),
                 child: TextFormField(
+                  controller: mailctrl,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "*required";
@@ -79,6 +121,7 @@ class _Signup_PageState extends State<Signup_Page> {
               Padding(
                 padding: EdgeInsets.only(left: 40.w, right: 40.w, top: 40.h),
                 child: TextFormField(
+                  controller: pswctrl,
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "*required";
@@ -89,6 +132,27 @@ class _Signup_PageState extends State<Signup_Page> {
                       hintText: "Password",
                       hintStyle: GoogleFonts.poppins(fontSize: 15.sp)),
                 ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 40.w, right: 40.w, top: 40.h),
+                child: TextFormField(
+                  controller: plcctrl,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "*required";
+                    }
+                  },
+                  decoration: InputDecoration(
+                      hintText: "Place",
+                      hintStyle: GoogleFonts.poppins(fontSize: 15.sp)),
+                ),
+              ),
+              SizedBox(
+                height: 40.h,
+              ),
+              ElevatedButton(
+                onPressed: registerUser,
+                child: Text("Register"),
               ),
               SizedBox(
                 height: 40.h,
@@ -126,72 +190,6 @@ class _Signup_PageState extends State<Signup_Page> {
               SizedBox(
                 height: 40.h,
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Container(
-              //       height: 2,
-              //       width: 120,
-              //       color: Colors.grey,
-              //     ),
-              //     SizedBox(
-              //       width: 10.w,
-              //     ),
-              //     Text(
-              //       "or",
-              //       style: GoogleFonts.poppins(
-              //         fontWeight: FontWeight.w700,
-              //         fontSize: 15.sp,
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 10.w,
-              //     ),
-              //     Container(
-              //       height: 2,
-              //       width: 120,
-              //       color: Colors.grey,
-              //     ),
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 30.h,
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Text(
-              //       "Social Media Signup",
-              //       style: GoogleFonts.poppins(
-              //           fontSize: 18.sp,
-              //           fontWeight: FontWeight.w400,
-              //           color: Colors.deepPurple),
-              //     )
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 30.h,
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Icon(SocialMediaIcons.google),
-              //     SizedBox(
-              //       width: 20.w,
-              //     ),
-              //     Icon(SocialMediaIcons.facebook,),
-              //     SizedBox(
-              //       width: 20.w,
-              //     ),
-              //     Icon(SocialMediaIcons.twitter),
-              //     SizedBox(
-              //       width: 20.w,
-              //     ),
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 30.h,
-              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

@@ -70,15 +70,42 @@ class _Login_PageState extends State<Login_Page> {
   }
 
   final form_key = GlobalKey<FormState>();
+  final mailctrl = TextEditingController();
+  final pswctrl = TextEditingController();
+  void loginUser() async {
+    if (form_key.currentState!.validate()) {
+      try {
+        UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+          email: mailctrl.text,
+          password: pswctrl.text,
+        );
+
+        if (userCredential.user != null) {
+         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+           return  Home();
+         },));
+        }
+      } catch (e) {
+        print("Login Error: $e");
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
-      automaticallyImplyLeading: false,leading: IconButton(onPressed: () {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-          return Login_Signup();
-        },));
-      }, icon: Icon(Icons.arrow_back)),
-    ),
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(
+                builder: (context) {
+                  return Login_Signup();
+                },
+              ));
+            },
+            icon: Icon(Icons.arrow_back)),
+      ),
       body: isloading == true
           ? Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -100,8 +127,7 @@ class _Login_PageState extends State<Login_Page> {
           : Form(
               key: form_key,
               child: SingleChildScrollView(
-                child: 
-                SafeArea(
+                child: SafeArea(
                   child: Column(
                     children: [
                       Row(
@@ -135,21 +161,21 @@ class _Login_PageState extends State<Login_Page> {
                       Padding(
                         padding:
                             EdgeInsets.only(left: 40.w, right: 40.w, top: 60.h),
-                        child: TextFormField(
+                        child: TextFormField(controller: mailctrl,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "*required";
                             }
                           },
                           decoration: InputDecoration(
-                              hintText: "Username",
+                              hintText: "E-mail",
                               hintStyle: GoogleFonts.poppins(fontSize: 15.sp)),
                         ),
                       ),
                       Padding(
                         padding:
                             EdgeInsets.only(left: 40.w, right: 40.w, top: 60.h),
-                        child: TextFormField(
+                        child: TextFormField(controller: pswctrl,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "*required";
@@ -169,7 +195,7 @@ class _Login_PageState extends State<Login_Page> {
                         children: [
                           InkWell(
                             onTap: () {
-                              if (form_key.currentState!.validate()) {}
+                              loginUser();
                             },
                             child: Container(
                               height: 50.h,
@@ -263,14 +289,14 @@ class _Login_PageState extends State<Login_Page> {
                           SizedBox(
                             width: 20.w,
                           ),
-                  
+
                           IconButton(
                             onPressed: () {
                               signInWithGoogle();
                             },
                             icon: Icon(SocialMediaIcons.google),
                           )
-                  
+
                           // Icon(SocialMediaIcons.facebook,),
                           // SizedBox(
                           //   width: 20.w,

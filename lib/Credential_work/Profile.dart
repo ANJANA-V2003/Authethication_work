@@ -2,6 +2,7 @@ import 'package:authentication_work/Credential_work/login_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Profilework extends StatefulWidget {
   const Profilework({super.key});
@@ -30,8 +31,9 @@ class _ProfileworkState extends State<Profilework> {
     }
   }
 
-  Future <Map<String, dynamic>?> fetchUserData() async {
-    String uid = _auth.currentUser!.uid;//this uid is inbuiltt and stored in auth
+  Future<Map<String, dynamic>?> fetchUserData() async {
+    String uid =
+        _auth.currentUser!.uid; //this uid is inbuiltt and stored in auth
     DocumentSnapshot userDoc =
         await FirebaseFirestore.instance.collection('CrudUser').doc(uid).get();
     return userDoc.data() as Map<String, dynamic>?;
@@ -62,38 +64,100 @@ class _ProfileworkState extends State<Profilework> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Name: ${userData['name']}",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                  ),
-                ],
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Email: ${userData['email']}",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  Container(
+                    height: 60.h,
+                    width: 350.w,
+                    decoration: BoxDecoration(
+                        color: Colors.purple.shade100,
+                        borderRadius: BorderRadius.circular(12.r)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 20.w),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Name: ${userData['name']}",
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center,
+              SizedBox(height: 20.h,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Place: ${userData['place']}",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  Container( height: 60.h,
+                    width: 350.w,
+                    decoration: BoxDecoration(
+                        color: Colors.purple.shade100,
+                        borderRadius: BorderRadius.circular(12.r)),
+                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding:  EdgeInsets.only(left: 20.w),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Email: ${userData['email']}",
+                                style:
+                                    TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
+              SizedBox(height: 20.h,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 60.h,
+                    width: 350.w,
+                    decoration: BoxDecoration(
+                        color: Colors.purple.shade100,
+                        borderRadius: BorderRadius.circular(12.r)),
+                    child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding:  EdgeInsets.only(left: 20.w),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Place: ${userData['place']}",
+                                style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 40.h,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton.icon(
                     onPressed: () => _logout(context),
-                    icon: Icon(Icons.logout),
-                    label: Text('Logout'),
+                    icon: Icon(Icons.logout,color: Colors.white,),
+                    label: Text('Logout',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500),),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
                       padding:
