@@ -1,4 +1,5 @@
 import 'package:authentication_work/Credential_work/Home.dart';
+import 'package:authentication_work/Credential_work/login_signup.dart';
 import 'package:authentication_work/Credential_work/signup_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -71,7 +72,13 @@ class _Login_PageState extends State<Login_Page> {
   final form_key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(appBar: AppBar(
+      automaticallyImplyLeading: false,leading: IconButton(onPressed: () {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+          return Login_Signup();
+        },));
+      }, icon: Icon(Icons.arrow_back)),
+    ),
       body: isloading == true
           ? Column(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -126,72 +126,72 @@ class _Signup_PageState extends State<Signup_Page> {
               SizedBox(
                 height: 40.h,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 2,
-                    width: 120,
-                    color: Colors.grey,
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Text(
-                    "or",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 15.sp,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10.w,
-                  ),
-                  Container(
-                    height: 2,
-                    width: 120,
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Social Media Signup",
-                    style: GoogleFonts.poppins(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.deepPurple),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(SocialMediaIcons.google),
-                  SizedBox(
-                    width: 20.w,
-                  ),
-                  Icon(SocialMediaIcons.facebook,),
-                  SizedBox(
-                    width: 20.w,
-                  ),
-                  Icon(SocialMediaIcons.twitter),
-                  SizedBox(
-                    width: 20.w,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30.h,
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Container(
+              //       height: 2,
+              //       width: 120,
+              //       color: Colors.grey,
+              //     ),
+              //     SizedBox(
+              //       width: 10.w,
+              //     ),
+              //     Text(
+              //       "or",
+              //       style: GoogleFonts.poppins(
+              //         fontWeight: FontWeight.w700,
+              //         fontSize: 15.sp,
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       width: 10.w,
+              //     ),
+              //     Container(
+              //       height: 2,
+              //       width: 120,
+              //       color: Colors.grey,
+              //     ),
+              //   ],
+              // ),
+              // SizedBox(
+              //   height: 30.h,
+              // ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Text(
+              //       "Social Media Signup",
+              //       style: GoogleFonts.poppins(
+              //           fontSize: 18.sp,
+              //           fontWeight: FontWeight.w400,
+              //           color: Colors.deepPurple),
+              //     )
+              //   ],
+              // ),
+              // SizedBox(
+              //   height: 30.h,
+              // ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Icon(SocialMediaIcons.google),
+              //     SizedBox(
+              //       width: 20.w,
+              //     ),
+              //     Icon(SocialMediaIcons.facebook,),
+              //     SizedBox(
+              //       width: 20.w,
+              //     ),
+              //     Icon(SocialMediaIcons.twitter),
+              //     SizedBox(
+              //       width: 20.w,
+              //     ),
+              //   ],
+              // ),
+              // SizedBox(
+              //   height: 30.h,
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

@@ -18,14 +18,18 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(title: Text("Home Screen",style: GoogleFonts.poppins(
+          fontSize: 25.sp, color: Colors.purple.shade600)),centerTitle: true,
         leading: InkWell(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
                 return Profilework();
               },));
             },
-            child: CircleAvatar()),
+            child: Padding(
+              padding:  EdgeInsets.only(left: 10.w),
+              child: CircleAvatar(radius: 25.r,),
+            )),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -33,8 +37,8 @@ class _HomeState extends State<Home> {
           Center(
             child: Text(
               "You are Logged In",
-              style: GoogleFonts.poppins(
-                  fontSize: 25.sp, color: Colors.purple.shade600),
+              style: GoogleFonts.poppins(fontWeight: FontWeight.w600,
+                  fontSize: 18.sp, color: Colors.purple.shade600),
             ),
           ),
         ],
