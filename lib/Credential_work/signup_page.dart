@@ -35,7 +35,7 @@ class _Signup_PageState extends State<Signup_Page> {
         await _firestore
             .collection('CrudUser')
             .doc(userCredential.user!.uid)
-            .set({
+            .set({                //
           'name': namectrl.text,
           'email': mailctrl.text,
           'place': plcctrl.text,
@@ -147,13 +147,13 @@ class _Signup_PageState extends State<Signup_Page> {
                       hintStyle: GoogleFonts.poppins(fontSize: 15.sp)),
                 ),
               ),
-              SizedBox(
-                height: 40.h,
-              ),
-              ElevatedButton(
-                onPressed: registerUser,
-                child: Text("Register"),
-              ),
+              // SizedBox(
+              //   height: 40.h,
+              // ),
+              // ElevatedButton(
+              //   onPressed: registerUser,
+              //   child: Text("Register"),
+              // ),
               SizedBox(
                 height: 40.h,
               ),
@@ -163,11 +163,12 @@ class _Signup_PageState extends State<Signup_Page> {
                   InkWell(
                     onTap: () {
                       if (form_key.currentState!.validate()) {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return Signup_Page();
-                          },
-                        ));
+                        registerUser();
+                        // Navigator.push(context, MaterialPageRoute(
+                        //   builder: (context) {
+                        //     return Signup_Page();
+                        //   },
+                        // ));
                       }
                     },
                     child: Container(

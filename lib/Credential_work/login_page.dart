@@ -90,6 +90,25 @@ class _Login_PageState extends State<Login_Page> {
       }
     }
   }
+  Future<void> resetPassword() async {   // this is the function for forgot password
+    if (mailctrl.text.isNotEmpty) {
+      try {
+        await _auth.sendPasswordResetEmail(email: mailctrl.text);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Password reset link sent to $mailctrl')),
+        );
+      } catch (e) {
+        print("Password Reset Error: $e");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: Unable to send reset link')),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please enter your email address')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -220,13 +239,17 @@ class _Login_PageState extends State<Login_Page> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            "Forgot Password ?",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 15.sp,
-                                color: Colors.deepPurple),
-                          )
+                          TextButton(onPressed: () {
+                            resetPassword();
+                          }, child:
+                            Text(
+                              "Forgot Password ?",
+                              style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 15.sp,
+                                  color: Colors.deepPurple),
+                            ))
+
                         ],
                       ),
                       SizedBox(
